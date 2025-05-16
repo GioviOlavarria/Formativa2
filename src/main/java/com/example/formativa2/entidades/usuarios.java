@@ -3,10 +3,10 @@ package com.example.formativa2.entidades;
 import lombok.Data;
 
 import jakarta.persistence.*;
+import java.util.*;
 
 @Data
 @Entity
-
 @Table(name = "tabla_usuarios")
 public class usuarios {
     @Id
@@ -19,4 +19,7 @@ public class usuarios {
 
     @Column(name = "correo_electronico", unique = true, nullable = false)
     private String email;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<prestamos> listaPrestamos = new ArrayList<>();
 }
