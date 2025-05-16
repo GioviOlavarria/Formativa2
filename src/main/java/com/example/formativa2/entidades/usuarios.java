@@ -1,8 +1,9 @@
 package com.example.formativa2.entidades;
 
 import lombok.Data;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.*;
 
 @Data
@@ -21,5 +22,6 @@ public class usuarios {
     private String email;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("usuario-prestamos")
     private List<prestamos> listaPrestamos = new ArrayList<>();
 }

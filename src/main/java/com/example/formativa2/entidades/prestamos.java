@@ -2,6 +2,7 @@ package com.example.formativa2.entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,7 @@ public class prestamos {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
+    @JsonBackReference("usuario-prestamos")
     private usuarios usuario;
 
     @ManyToOne
